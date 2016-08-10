@@ -27,3 +27,27 @@ $("button").on("click", function() {
 	// Don't refresh the page!
 	return false;
 });
+
+
+//Firebase watcher + initial loader
+database.ref().on("child_added", function(snapshot) {
+
+	// Log everything that's coming out of snapshot
+	console.log(snapshot.val().name);
+	console.log(snapshot.val().role);
+	console.log(snapshot.val().startDate);
+	console.log(snapshot.val().monthlyRate);
+
+	// Change the HTML to reflect
+	$(".table").append("<tr>");
+	$(".table").append("<td>" + snapshot.val().name + "</td>");
+	$(".table").append("<td>" + snapshot.val().role + "</td>");
+	$(".table").append("<td>" + snapshot.val().startDate + "</td>");
+	$(".table").append("<td>" + snapshot.val().monthlyRate + "</td></tr>");
+
+
+// Handle the errors
+}, function(errorObject){
+
+	console.log("Errors handled: " + errorObject.code)
+})
