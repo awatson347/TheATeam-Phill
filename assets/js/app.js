@@ -1,4 +1,4 @@
-//var dataRef = firebase.database();
+var database = firebase.database();
 
 // Initial Values
 var empName = "";
@@ -16,13 +16,13 @@ $("button").on("click", function() {
 
 	console.log("Submit button pushed!");
 
-/*	// Code for the push
-	dataRef.ref().push({
+	// Code for the push
+	database.ref().push({
 		name: empName,
 		role: role,
 		startDate: startDate,
 		monthlyRate: monthlyRate,
-	});*/
+	});
 
 	// Don't refresh the page!
 	return false;
