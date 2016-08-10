@@ -42,8 +42,12 @@ $("#addEmpButton").on("click", function() {
 });
 
 
-//Firebase watcher + initial loader
+// Watches Firebase and runs this upon initial page load + when an employee is added
 database.ref().on("child_added", function(snapshot) {
+
+	// Initialize variables
+	var monthsWorked = 0;
+	var totalBilled = 0;
 
 	// Log everything that's coming out of snapshot
 	console.log(snapshot.val().name);
@@ -51,12 +55,21 @@ database.ref().on("child_added", function(snapshot) {
 	console.log(snapshot.val().startDate);
 	console.log(snapshot.val().monthlyRate);
 
-	// Change the HTML to reflect
-	$(".table").append("<tr>");
-	$(".table").append("<td>" + snapshot.val().name + "</td>");
-	$(".table").append("<td>" + snapshot.val().role + "</td>");
-	$(".table").append("<td>" + snapshot.val().startDate + "</td>");
-	$(".table").append("<td>" + snapshot.val().monthlyRate + "</td></tr>");
+	// Insert fancy math here to calculate monthsWorked for each employee
+
+
+
+	// Calculates totalBilled for each employee
+	totalBilled = monthsWorked * snapshot.val().monthlyRate;
+	console.log("Total Billed: $" + totalBilled);
+
+	// Display each employee's data in the table
+	$("#employeeTable > tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" 
+		+ snapshot.val().role + "</td><td>" 
+		+ snapshot.val().startDate + "</td><td>"
+		+ monthsWorked + "</td><td>"
+		+ snapshot.val().monthlyRate + "</td><td>" 
+		+ totalBilled + "</td></tr>");
 
 
 // Handle the errors
