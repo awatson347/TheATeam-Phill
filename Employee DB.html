@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="UTF-8">
 	<title>Employee Data Management</title>
-	
+
 	<!-- jQuery link -->
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-
+	
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -18,18 +19,9 @@
 	<!-- Firebase JavaScript Link -->
 	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 
-	<script>
-		// Initialize Firebase
-		var config = {
-		    apiKey: "AIzaSyAFhxY7vLPtWwBROEeqfkQwadzDOrA3iEg",
-		    authDomain: "employeedb-29830.firebaseapp.com",
-		    databaseURL: "https://employeedb-29830.firebaseio.com",
-		    storageBucket: "employeedb-29830.appspot.com",
-		};
-		firebase.initializeApp(config);
-	</script>
+	<!-- Moment.js Link -->
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
-	<meta charset="UTF-8">
 </head>
 <body>
 
@@ -41,13 +33,16 @@
 			<h3 class="text-center">A Comprehensive Directory of Employee Billable Hours</h3>
 		</div>
 
+		<!-- Current Employees Panel -->
 		<div class="panel panel-primary">
 		  <div class="panel-heading">
 		    <h3 class="panel-title"><strong>Current Employees</strong></h3>
 		  </div>
+
 		  <div class="panel-body">
 		    <!-- Table -->
-		    <table class="table">
+		    <table class="table table-hover" id="employeeTable">
+		    	<thead>
 		    	  <tr>
 				    <th>Employee Name</th>
 				    <th>Role</th>
@@ -56,6 +51,9 @@
 				    <th>Monthly Rate ($)</th>
 				    <th>Total Billed ($)</th>
 				  </tr>
+				 </thead>
+
+				 <tbody>
 				  <tr>
 				    <td>Jim Featherworth</td>
 				    <td>Gangsta</td>
@@ -64,39 +62,42 @@
 				    <td>4088</td>
 				    <td>200312</td>
 				  </tr>
+				</tbody>
 		    </table>
 		  </div>
 		</div>
 
+		<!-- Add Employees Panel -->
 		<div class="panel panel-primary">
 		  <div class="panel-heading">
 		    <h3 class="panel-title"><strong>Add Employee</strong></h3>
 		  </div>
+
 		  <div class="panel-body">
 		    <form>
 			  <div class="form-group">
 			    <label for="empName">Employee Name</label>
-			    <input type="text" class="form-control" id="empName">
+			    <input type="text" class="form-control" id="empNameInput">
 			  </div>
 			  <div class="form-group">
 			    <label for="role">Role</label>
-			    <input type="text" class="form-control" id="role">
+			    <input type="text" class="form-control" id="roleInput">
 			  </div>
 			  <div class="form-group">
 			    <label for="startDate">Start Date (DD/MM/YY - ex: 01/01/89)</label>
-			    <input type="text" class="form-control" id="startDate">
+			    <input type="text" class="form-control" id="startDateInput">
 			  </div>
 			  <div class="form-group">
 			    <label for="monthlyRate">Monthly Rate ($)</label>
-			    <input type="text" class="form-control" id="monthlyRate">
+			    <input type="text" class="form-control" id="monthlyRateInput">
 			  </div>
-		  	  <button type="submit" class="btn btn-primary">Submit</button>
+		  	  <button type="submit" class="btn btn-primary" id="addEmpButton">Submit</button>
 			</form>
 		  </div>
 		</div>
 	</div>
 
-
+	<!-- JavaScript file -->
 	<script src="assets/js/app.js"></script>
 </body>
 </html>

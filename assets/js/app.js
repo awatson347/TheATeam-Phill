@@ -1,28 +1,41 @@
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyAFhxY7vLPtWwBROEeqfkQwadzDOrA3iEg",
+    authDomain: "employeedb-29830.firebaseapp.com",
+    databaseURL: "https://employeedb-29830.firebaseio.com",
+    storageBucket: "employeedb-29830.appspot.com",
+};
+firebase.initializeApp(config);
+
 var database = firebase.database();
 
-// Initial Values
-var empName = "";
-var role = "";
-var startDate = 0;
-var monthlyRate = 0;
-
 // Capture Button Click
-$("button").on("click", function() {
+$("#addEmpButton").on("click", function() {
 
-	empName = $('#empName').val().trim();
-	role = $('#role').val().trim();
-	startDate = $('#startDate').val().trim();
-	monthlyRate = $('#monthlyRate').val().trim();
+	// Grabs user input
+	var empName = $('#empNameInput').val().trim();
+	var empRole = $('#roleInput').val().trim();
+	var empStartDate = $('#startDateInput').val().trim();
+	var empMonthlyRate = $('#monthlyRateInput').val().trim();
 
 	console.log("Submit button pushed!");
 
-	// Code for the push
+	// Push the Add Employee data to FB db
 	database.ref().push({
 		name: empName,
-		role: role,
-		startDate: startDate,
-		monthlyRate: monthlyRate,
+		role: empRole,
+		startDate: empStartDate,
+		monthlyRate: empMonthlyRate,
 	});
+
+	// Alert
+	alert("Employee added!");
+
+	// Clears the input text boxes
+	$('#empNameInput').val("");
+	$('#roleInput').val("");
+	$('#startDateInput').val("");
+	$('#monthlyRateInput').val("");
 
 	// Don't refresh the page!
 	return false;
