@@ -15,7 +15,7 @@ $("#addEmpButton").on("click", function() {
 	// Grabs user input
 	var empName = $('#empNameInput').val().trim();
 	var empRole = $('#roleInput').val().trim();
-	var empStartDate = $('#startDateInput').val().trim();
+	var empStartDate = moment($('#startDateInput').val().trim(), "MM/DD/YY").format("X");
 	var empMonthlyRate = $('#monthlyRateInput').val().trim();
 
 	console.log("Submit button pushed!");
@@ -45,30 +45,34 @@ $("#addEmpButton").on("click", function() {
 // Watches Firebase and runs this upon initial page load + when an employee is added
 database.ref().on("child_added", function(snapshot) {
 
-	// Initialize variables
-	var monthsWorked = 0;
-	var totalBilled = 0;
+	// Store the child's snapshot data in local variables to make life easier
+	var empName = snapshot.val().name;
+	var empRole = snapshot.val().role;
+	var empStartDate = snapshot.val().startDate;
+	var empMonthlyRate = snapshot.val().monthlyRate;
 
 	// Log everything that's coming out of snapshot
-	console.log(snapshot.val().name);
-	console.log(snapshot.val().role);
-	console.log(snapshot.val().startDate);
-	console.log(snapshot.val().monthlyRate);
+	console.log(empName);
+	console.log(empRole);
+	console.log(empStartDate);
+	console.log(empMonthlyRate);
 
-	// Insert fancy math here to calculate monthsWorked for each employee
+	// Convert the UNIX Start Date back to the American date format for readability
+	var empStartAmerican = moment.unix(empStartDate).format("MM/DD/YY");
 
-
+	// Calculate monthsWorked for each employee
+	var monthsWorked = moment().diff(moment.unix(empStartDate, "X"), "months");
 
 	// Calculates totalBilled for each employee
-	totalBilled = monthsWorked * snapshot.val().monthlyRate;
+	var totalBilled = monthsWorked * empMonthlyRate;
 	console.log("Total Billed: $" + totalBilled);
 
 	// Display each employee's data in the table
-	$("#employeeTable > tbody").append("<tr><td>" + snapshot.val().name + "</td><td>" 
-		+ snapshot.val().role + "</td><td>" 
-		+ snapshot.val().startDate + "</td><td>"
+	$("#employeeTable > tbody").append("<tr><td>" + empName + "</td><td>" 
+		+ empRole + "</td><td>" 
+		+ empStartAmerican + "</td><td>"
 		+ monthsWorked + "</td><td>"
-		+ snapshot.val().monthlyRate + "</td><td>" 
+		+ empMonthlyRate + "</td><td>" 
 		+ totalBilled + "</td></tr>");
 
 
