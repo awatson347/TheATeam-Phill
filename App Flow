@@ -1,0 +1,11 @@
+// input some text and click search & return result in new page (Angela)--> 
+
+// query spotify api AJAX return in JSON (Anthony)
+	// if artist, pull most popular song
+	// if song go to next
+
+// query musixmatch api for lyrics from title and artist (from spotify json) (Phil)
+
+// display spotify mini player & play song (Alex)
+
+// display lyrics to page (Alex)
