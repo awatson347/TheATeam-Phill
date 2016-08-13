@@ -25,7 +25,7 @@ $("#searchButton").on("click", function() {
 
 	console.log("Search button pushed!");
 
-	// Redirects to the music page
+	// Redirects to / Refreshes the music page with search results
 	window.location.assign("searchResults.html");
 
 /*	// Clears the input text boxes
