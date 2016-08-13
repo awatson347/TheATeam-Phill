@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+	position: relative;
+}
+
+.jumbotron {
+	background-color: blue;
+	color: #fff;
+}
+
+#searchInput, #searchButton {
+	margin-bottom: 30px;
+}
+
+#navbarSearch {
+	min-width: 500px;
+	position: absolute;
+	left: 30%;
+}
+
