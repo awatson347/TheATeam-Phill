@@ -9,12 +9,7 @@ var database = firebase.database();*/
 // Capture Button Click
 $("#searchButton").on("click", function() {
 
-/*	var name = $('#nameinput').val().trim();
-	var email = $('#emailinput').val().trim();
-	var age = $('#ageinput').val().trim();
-	var comment = $('#commentinput').val().trim();
-
-	// Code for the push
+/*	// Code for the push
 	database.ref().push({
 		name: name,
 		email: email,
@@ -23,20 +18,27 @@ $("#searchButton").on("click", function() {
 		dateAdded: firebase.database.ServerValue.TIMESTAMP
 	});*/
 
+
+	// Grab the Search Text-box info
+	var search = $('#searchInput').val().trim();
+
+	// Run the getMusicInfo function
+	getMusicInfo(search);
+
 	console.log("Search button pushed!");
 
 	// Redirects to / Refreshes the music page with search results
 	window.location.assign("searchResults.html");
 
-/*	// Clears the input text boxes
-	$('#nameinput').val("");
-	$('#emailinput').val("");
-	$('#ageinput').val("");
-	$('#commentinput').val("");*/
-
 	// Don't refresh the page!
 	return false;
 });
+
+function getMusicInfo(search) {
+
+	console.log("Searching for: " + search);
+}
+
 
 /*//Firebase watcher + initial loader HINT: this behaves similarly .on("value")
 database.ref().on("child_added", function(childSnapshot) {
