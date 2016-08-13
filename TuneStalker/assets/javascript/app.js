@@ -24,7 +24,9 @@ $("#searchButton").on("click", function() {
 	});*/
 
 	console.log("Search button pushed!");
-	
+
+	// Redirects to the music page
+	window.location.assign("searchResults.html");
 
 /*	// Clears the input text boxes
 	$('#nameinput').val("");
