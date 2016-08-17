@@ -28,16 +28,36 @@ $("#searchButton").on("click", function() {
 	console.log("Search button pushed!");
 
 	// Redirects to / Refreshes the music page with search results
-	window.location.assign("searchResults.html");
+	//window.location.assign("searchResults.html?"+ search);
 
 	// Don't refresh the page!
 	return false;
 });
 
 function getMusicInfo(search) {
-
 	console.log("Searching for: " + search);
+	var settings = {
+		"async": true,
+		"crossDomain": true,
+		"url": "http://api.musixmatch.com/ws/1.1/track.search?apikey=2d5aab3db0ef66942e77f09e6372efda&q=" + search,
+		"method": "GET",
+		"headers": {
+			"cache-control": "no-cache",
+			"postman-token": "86d37139-361c-0e1f-bc05-0a826abaa0b6",
+    // "origin": "Access-Control-Allow-Origin"
+		}
+	}
+
+	$.ajax(settings).done(function (response) {
+		console.log(response);
+	});
 }
+
+// MusixMatch API (working / Phil)
+
+
+
+// End Phil's API
 
 
 /*//Firebase watcher + initial loader HINT: this behaves similarly .on("value")
