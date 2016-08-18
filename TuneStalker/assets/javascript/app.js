@@ -6,8 +6,11 @@ firebase.initializeApp(config);
 
 var database = firebase.database();*/
 
+// resultsPage is loaded but automatically hidden at page load
+$("#resultsPage").hide();
+
 // Capture Button Click
-$("#searchButton").on("click", function() {
+$(".searchButton").on("click", function() {
 
 /*	// Code for the push
 	database.ref().push({
@@ -20,15 +23,17 @@ $("#searchButton").on("click", function() {
 
 
 	// Grab the Search Text-box info
-	var search = $('#searchInput').val().trim();
+	var search = $('.searchInput').val().trim();
 
 	// Run the getMusicInfo function
 	getMusicInfo(search);
 
 	console.log("Search button pushed!");
 
-	// Redirects to / Refreshes the music page with search results
-	//window.location.assign("searchResults.html?"+ search);
+	// Empties the startPage div and shows the resultsPage div
+	// window.location.assign("searchResults.html?"+ search);
+	$("#startPage").empty();
+	$("#resultsPage").show();
 
 	// Don't refresh the page!
 	return false;

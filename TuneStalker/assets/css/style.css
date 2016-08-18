@@ -11,7 +11,7 @@
 	color: #fff;
 }
 
-#searchInput, #searchButton {
+.searchInput, .searchButton {
 	margin-bottom: 30px;
 }
 
