@@ -1,3 +1,5 @@
+$(document).ready(function() {
+
 // Global Variables
 //-----------------------------------------------------------------------
 
@@ -81,6 +83,9 @@ function getMusicInfo(search) {
 // App Logic
 //-----------------------------------------------------------------------
 
+// Places the focus in the big searchInput text-box
+$(".focus1").focus();
+
 // resultsPage is loaded but automatically hidden at page load
 $("#resultsPage").hide();
 
@@ -112,6 +117,10 @@ $(".searchButton").on("click", function() {
 	// window.location.assign("searchResults.html?"+ search);
 	$("#startPage").empty();
 	$("#resultsPage").show();
+
+	// Clears the navbar searchInput text-box and places the focus in there
+	$(".focus2").val("")
+		.focus();	
 
 	// Don't refresh the page!
 	return false;
@@ -160,3 +169,5 @@ dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", functio
 	$("#agedisplay").html(childSnapshot.val().age);
 	$("#commentdisplay").html(childSnapshot.val().comment);
 });*/
+
+});
