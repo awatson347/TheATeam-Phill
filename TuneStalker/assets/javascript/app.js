@@ -1,3 +1,15 @@
+// Global Variables
+//-----------------------------------------------------------------------
+
+// var search = "Closing Time";
+var musixTrackId = "";
+
+// Functions
+//-----------------------------------------------------------------------
+
+// App Logic
+//-----------------------------------------------------------------------
+
 // Initialize Firebase
 /*var config = {
 
@@ -39,14 +51,20 @@ $(".searchButton").on("click", function() {
 	return false;
 });
 
+
+// MusixMatch API
+// ----------------------------------------------
+
+// Search MusixMatch for track and return first track ID
 function getMusicInfo(search) {
 	console.log("Searching for: " + search);
-	var search = "Fijiwiji Yours Truly"
+	var search = "semisonic closing time"
 	var settings = {
 		"async": true,
 		"crossDomain": true,
 		"url": "http://api.musixmatch.com/ws/1.1/track.search?apikey=2d5aab3db0ef66942e77f09e6372efda&q=" + search,
 		"method": "GET",
+		"dataType": "json",
 		"headers": {
 			"cache-control": "no-cache",
 			"postman-token": "86d37139-361c-0e1f-bc05-0a826abaa0b6",
@@ -55,15 +73,20 @@ function getMusicInfo(search) {
 	}
 
 	$.ajax(settings).done(function (response) {
-		console.log(response);
+		console.log(response)
+		// console.log('first track ID', response.message.body.track_list["0"].track.track_id)
+		musixTrackId = response.message.body.track_list["0"].track.track_id
+		$.each(response.message.body.track_list, function(k, value) {
+			console.log('Track ' + k, value);
+		});
+		console.log('global var musixTrackId: ' + musixTrackId)
 	});
 }
 
-// MusixMatch API (working / Phil)
+function getLyrics(search) {
 
+}
 
-
-// End Phil's API
 
 
 /*//Firebase watcher + initial loader HINT: this behaves similarly .on("value")
