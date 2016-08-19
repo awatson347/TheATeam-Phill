@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Tune Stalker! | Home</title>
+	<title>Tune Stalker! | Your Personalized Music Hub</title>
 
 	<!-- jQuery link -->
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
@@ -36,10 +36,10 @@
 		<!-- ************************* -->
 		<!-- Jumbotron -->
 		<!-- ************************* -->
-		<div class="jumbotron">
+<!-- 		<div class="jumbotron">
 			<h1 class="text-center">Tune Stalker!</h1>
 			<h3 class="text-center">Your personalized music hub</h3>
-		</div>
+		</div> -->
 
 		<!-- ************************* -->
 		<!-- Search Bar -->
@@ -51,10 +51,10 @@
 
 		  <div class="col-lg-6">
 		    <div class="input-group input-group-lg">
-		      <input class="form-control searchInput focus1" type="text" placeholder="Search for Artist, Song, or Album...">
+<!-- 		      <input class="form-control searchInput" id="focus1" type="text" placeholder="Search for Artist, Song, or Album...">
 		      <span class="input-group-btn">
 		        <button class="btn btn-primary searchButton" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-		      </span>
+		      </span> -->
 		    </div><!-- /input-group -->
 		  </div><!-- /.col-lg-6 -->
 
@@ -76,27 +76,17 @@
 		    </div>
 
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		      <form class="navbar-form navbar-left">
+		      <form class="navbar-form navbar-left" onSubmit="return false;">
 		        <div class="input-group" id="navbarSearch">
-		          <input class="form-control searchInput focus2" type="text" placeholder="Search for Artist, Song, or Album...">
+		          <input class="form-control" id="searchInput" type="text" placeholder="Search for Artist, Song, or Album...">
 		          <span class="input-group-btn">
-			        <button class="btn btn-primary searchButton" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+			        <button class="btn btn-primary" id="searchButton" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 			      </span>
 			    </div><!-- /input-group -->
 		      </form>
 
 		      <ul class="nav navbar-nav navbar-right" id="navbarLinks">
-		        <li><a href="#">Home</a></li>
-		        <li class="dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">History <span class="caret"></span></a>
-		          <ul class="dropdown-menu">
-		            <li><a href="#">Action</a></li>
-		            <li><a href="#">Another action</a></li>
-		            <li><a href="#">Something else here</a></li>
-		            <li role="separator" class="divider"></li>
-		            <li><a href="#">Separated link</a></li>
-		          </ul>
-		        </li>
+		        <li><a href="#">Login to Spotify</a></li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 
@@ -134,7 +124,7 @@
 		      <h3 class="panel-title">Song | Album</h3>
 		    </div>
 		    <div class="panel-body">
-		      <p>Lyrics here</p>
+		      <h3>Type a song title in the search box above to get lyrics!</h3>
 		      <p>Bacon ipsum dolor amet irure consequat dolor dolore exercitation. Jerky chuck corned beef, ribeye eu short ribs biltong leberkas flank. Pancetta ut brisket proident fugiat pastrami prosciutto. Ut in tri-tip, est swine deserunt minim leberkas rump bacon meatball pig short ribs. Eu pork belly magna tongue cillum. Rump cillum short ribs sausage. Bresaola tail ea sausage aliquip in laborum ground round exercitation. Sint shank et ullamco sunt jerky tenderloin excepteur commodo. Bacon leberkas quis biltong porchetta mollit aliquip. Do in eu brisket chuck ut corned beef adipisicing kevin officia irure lorem. Andouille aute turkey dolore nisi est eu. Reprehenderit strip steak id velit. Capicola do non et frankfurter ea kevin, boudin porchetta. Chuck veniam consequat ea, laboris eiusmod deserunt alcatra incididunt in. Velit elit pancetta pastrami et eiusmod rump short ribs minim culpa tenderloin. Ullamco esse labore, jerky reprehenderit ut alcatra ut chuck short loin proident culpa occaecat fugiat. Eu landjaeger eiusmod, tri-tip aute chicken et enim aliquip commodo ex. Eiusmod filet mignon anim venison shank, prosciutto laboris t-bone pig ham.</p>
 		    </div>
 		  </div>

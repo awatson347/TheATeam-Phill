@@ -84,15 +84,23 @@ function getMusicInfo(search) {
 //-----------------------------------------------------------------------
 
 // Places the focus in the big searchInput text-box
-$(".focus1").focus();
+$("#searchInput").focus();
 
 // resultsPage is loaded but automatically hidden at page load
-$("#resultsPage").hide();
+/*$("#resultsPage").hide();*/
 
-// Capture Button Click
-$(".searchButton").on("click", function() {
+// Event Listener for hitting Enter key to initiate searching
+$("#searchInput").keyup(function(event) {
+    if ( event.keyCode === 13 ) {
+    	console.log("Enter key pushed!");
+    	$("#searchButton").click();
+    }
+});
 
-	search = $('.searchInput').val().trim()
+// Capture Button Click to initiate searching
+$("#searchButton").on("click", function() {
+
+	search = $('#searchInput').val().trim()
 
 /*	// Code for the push
 	database.ref().push({
@@ -111,15 +119,13 @@ $(".searchButton").on("click", function() {
 	// Gets Lyrics
 	// getLyrics(search);
 
-	// console.log("Search button pushed!");
-
 	// Empties the startPage div and shows the resultsPage div
 	// window.location.assign("searchResults.html?"+ search);
-	$("#startPage").empty();
+/*	$("#startPage").empty();
 	$("#resultsPage").show();
-
+*/
 	// Clears the navbar searchInput text-box and places the focus in there
-	$(".focus2").val("")
+	$("#searchInput").val("")
 		.focus();	
 
 	// Don't refresh the page!

@@ -6,12 +6,12 @@
 	position: relative;
 }
 
-.jumbotron {
+/*.jumbotron {
 	background-color: blue;
 	color: #fff;
-}
+}*/
 
-.searchInput, .searchButton {
+#searchInput, #searchButton {
 	margin-bottom: 30px;
 }
 
