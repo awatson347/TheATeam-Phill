@@ -1,28 +1,56 @@
 // Global Variables
 //-----------------------------------------------------------------------
 
-// var search = "Closing Time";
+var search = "";
 var musixTrackId = "";
+var spotifyTrackId = "";
+var lyrics = "";
 
 // Functions
 //-----------------------------------------------------------------------
 
+// MusixMatch API(Phil)
+
+// Search MusixMatch for track and return first track ID
+function getMusicInfo(search) {
+	console.log("Searching for: " + search);
+	// var search = "semisonic closing time"
+	var settings = {
+		"async": true,
+		"crossDomain": true,
+		"url": "http://api.musixmatch.com/ws/1.1/track.search?apikey=2d5aab3db0ef66942e77f09e6372efda&q=" + search,
+		"method": "GET",
+		"dataType": "json",
+		"headers": {
+			"cache-control": "no-cache",
+			"postman-token": "86d37139-361c-0e1f-bc05-0a826abaa0b6",
+		}
+	}
+
+	$.ajax(settings).done(function (response) {
+		// console.log(response)
+		console.log('first track ID', response.message.body.track_list["0"].track.track_id)
+		musixTrackId = response.message.body.track_list["0"].track.track_id
+		$.each(response.message.body.track_list, function(k, value) {
+			console.log('Track ' + k, value);
+		});
+		console.log('global var musixTrackId: ' + musixTrackId)
+	});
+}
+
+function getLyrics(search) {
+
+}
 // App Logic
 //-----------------------------------------------------------------------
-
-// Initialize Firebase
-/*var config = {
-
-};
-firebase.initializeApp(config);
-
-var database = firebase.database();*/
 
 // resultsPage is loaded but automatically hidden at page load
 $("#resultsPage").hide();
 
 // Capture Button Click
 $(".searchButton").on("click", function() {
+
+	search = $('.searchInput').val().trim()
 
 /*	// Code for the push
 	database.ref().push({
@@ -34,8 +62,6 @@ $(".searchButton").on("click", function() {
 	});*/
 
 
-	// Grab the Search Text-box info
-	var search = $('.searchInput').val().trim();
 
 	// Run the getMusicInfo function
 	getMusicInfo(search);
@@ -52,40 +78,15 @@ $(".searchButton").on("click", function() {
 });
 
 
-// MusixMatch API
-// ----------------------------------------------
+// Initialize Firebase
+/*var config = {
 
-// Search MusixMatch for track and return first track ID
-function getMusicInfo(search) {
-	console.log("Searching for: " + search);
-	var search = "semisonic closing time"
-	var settings = {
-		"async": true,
-		"crossDomain": true,
-		"url": "http://api.musixmatch.com/ws/1.1/track.search?apikey=2d5aab3db0ef66942e77f09e6372efda&q=" + search,
-		"method": "GET",
-		"dataType": "json",
-		"headers": {
-			"cache-control": "no-cache",
-			"postman-token": "86d37139-361c-0e1f-bc05-0a826abaa0b6",
-    // "origin": "Access-Control-Allow-Origin"
-		}
-	}
+};
+firebase.initializeApp(config);
 
-	$.ajax(settings).done(function (response) {
-		console.log(response)
-		// console.log('first track ID', response.message.body.track_list["0"].track.track_id)
-		musixTrackId = response.message.body.track_list["0"].track.track_id
-		$.each(response.message.body.track_list, function(k, value) {
-			console.log('Track ' + k, value);
-		});
-		console.log('global var musixTrackId: ' + musixTrackId)
-	});
-}
+var database = firebase.database();*/
 
-function getLyrics(search) {
 
-}
 
 
 
