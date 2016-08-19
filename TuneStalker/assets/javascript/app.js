@@ -1,20 +1,93 @@
-$( document ).ready(function() {
-// Initialize Firebase
-/*var config = {
+// Global Variables
+//-----------------------------------------------------------------------
 
-};
-firebase.initializeApp(config);
+var search = "";
+var musixTrackId = "";
+var spotifyTrackId = "";
+var musicBrainzId = "";
+var lyrics = "";
+var copyright = "";
+var artist = "";
+var album = "";
+var song = "";
+var albumArt = "";
+var releaseDate = "";
 
-var database = firebase.database();*/
 
-// Place focus on big searchInput text-box
-$('.focus1').focus();
+// Functions
+//-----------------------------------------------------------------------
+
+// MusixMatch API(Phil)
+
+// Search MusixMatch for track and return first track ID
+function getMusicInfo(search) {
+	console.log("Searching for: " + search);
+	var settings = {
+		"async": true,
+		"crossDomain": true,
+		"url": "http://api.musixmatch.com/ws/1.1/track.search?apikey=2d5aab3db0ef66942e77f09e6372efda&q=" + search,
+		"method": "GET",
+		"dataType": "json",
+		"headers": {
+			"cache-control": "no-cache",
+			"postman-token": "86d37139-361c-0e1f-bc05-0a826abaa0b6",
+		}
+	}
+
+	$.ajax(settings).done(function (response) {
+		musixTrackId = response.message.body.track_list["0"].track.track_id,
+		spotifyTrackId = response.message.body.track_list["0"].track.track_spotify_id,
+		musicBrainzId = response.message.body.track_list["0"].track.artist_mbid,
+		artist = response.message.body.track_list["0"].track.artist_name,
+		album = response.message.body.track_list["0"].track.album_name,
+		song = response.message.body.track_list["0"].track.track_name,
+		albumArt = response.message.body.track_list["0"].track.album_coverart_800x800,
+		releaseDate = response.message.body.track_list["0"].track.first_release_date,
+		console.log('spotifyTrackId: ' + spotifyTrackId)
+		console.log('musixTrackId: ' + musixTrackId)
+
+		//***Testing/Debugging***
+
+		// console.log(response)
+
+		// $.each(response.message.body.track_list, function(k, value) {
+		// 		console.log('Track ' + k, value);
+		// });
+
+		console.log("Lyrics Get for ID: " + musixTrackId)
+		var settings = {
+			"async": true,
+			"crossDomain": true,
+			"url": "http://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=2d5aab3db0ef66942e77f09e6372efda&track_id=" + musixTrackId,
+			"method": "GET",
+			"dataType": "json",
+			"headers": {
+				"cache-control": "no-cache",
+				"postman-token": "ffd2e704-d442-cb45-5451-3dbcc0be3c89"
+			}
+		}
+
+		$.ajax(settings).done(function (response) {
+			lyrics = response.message.body.lyrics.lyrics_body,
+			copyright = response.message.body.lyrics.lyrics_copyright,
+
+			//***Testing/Debugging
+			console.log('lyrics response: ' + lyrics)
+			console.log('musix Copyright: ' + copyright)
+		});
+	});
+}
+
+// App Logic
+//-----------------------------------------------------------------------
 
 // resultsPage is loaded but automatically hidden at page load
 $("#resultsPage").hide();
 
 // Capture Button Click
 $(".searchButton").on("click", function() {
+
+	search = $('.searchInput').val().trim()
 
 /*	// Code for the push
 	database.ref().push({
@@ -25,51 +98,36 @@ $(".searchButton").on("click", function() {
 		dateAdded: firebase.database.ServerValue.TIMESTAMP
 	});*/
 
-	console.log("Search button pushed!");
 
-	// Grab the Search Text-box info
-	var search = $('.searchInput').val().trim();
 
 	// Run the getMusicInfo function
 	getMusicInfo(search);
+
+	// Gets Lyrics
+	// getLyrics(search);
+
+	// console.log("Search button pushed!");
 
 	// Empties the startPage div and shows the resultsPage div
 	// window.location.assign("searchResults.html?"+ search);
 	$("#startPage").empty();
 	$("#resultsPage").show();
 
-	// Clears the navbar searchInput text-box and places the focus there
-	$('.searchInput').val("");
-	$('.focus2').focus();
-
 	// Don't refresh the page!
 	return false;
 });
 
-function getMusicInfo(search) {
-	console.log("Searching for: " + search);
-	var settings = {
-		"async": true,
-		"crossDomain": true,
-		"url": "http://api.musixmatch.com/ws/1.1/track.search?apikey=2d5aab3db0ef66942e77f09e6372efda&q=" + search,
-		"method": "GET",
-		"headers": {
-			"cache-control": "no-cache",
-			"postman-token": "86d37139-361c-0e1f-bc05-0a826abaa0b6",
-    // "origin": "Access-Control-Allow-Origin"
-		}
-	}
 
-	$.ajax(settings).done(function (response) {
-		console.log(response);
-	});
-}
+// Initialize Firebase
+/*var config = {
 
-// MusixMatch API (working / Phil)
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();*/
 
 
 
-// End Phil's API
 
 
 /*//Firebase watcher + initial loader HINT: this behaves similarly .on("value")
@@ -102,5 +160,3 @@ dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", functio
 	$("#agedisplay").html(childSnapshot.val().age);
 	$("#commentdisplay").html(childSnapshot.val().comment);
 });*/
-
-});
