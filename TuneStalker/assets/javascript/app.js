@@ -4,8 +4,14 @@
 var search = "";
 var musixTrackId = "";
 var spotifyTrackId = "";
+var musicBrainzId = "";
 var lyrics = "";
 var copyright = "";
+var artist = "";
+var album = "";
+var song = "";
+var albumArt = "";
+var releaseDate = "";
 
 
 // Functions
@@ -31,17 +37,23 @@ function getMusicInfo(search) {
 	$.ajax(settings).done(function (response) {
 		musixTrackId = response.message.body.track_list["0"].track.track_id,
 		spotifyTrackId = response.message.body.track_list["0"].track.track_spotify_id,
-		console.log('global var spotifyTrackId: ' + spotifyTrackId)
-		console.log('global var musixTrackId: ' + musixTrackId)
+		musicBrainzId = response.message.body.track_list["0"].track.artist_mbid,
+		artist = response.message.body.track_list["0"].track.artist_name,
+		album = response.message.body.track_list["0"].track.album_name,
+		song = response.message.body.track_list["0"].track.track_name,
+		albumArt = response.message.body.track_list["0"].track.album_coverart_800x800,
+		releaseDate = response.message.body.track_list["0"].track.first_release_date,
+		console.log('spotifyTrackId: ' + spotifyTrackId)
+		console.log('musixTrackId: ' + musixTrackId)
 
 		//***Testing/Debugging***
 
-		console.log(response)
+		// console.log(response)
 
 		// $.each(response.message.body.track_list, function(k, value) {
 		// 		console.log('Track ' + k, value);
 		// });
-		
+
 		console.log("Lyrics Get for ID: " + musixTrackId)
 		var settings = {
 			"async": true,
