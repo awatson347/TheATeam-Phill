@@ -1,3 +1,4 @@
+$( document ).ready(function() {
 // Initialize Firebase
 /*var config = {
 
@@ -5,6 +6,9 @@
 firebase.initializeApp(config);
 
 var database = firebase.database();*/
+
+// Place focus on big searchInput text-box
+$('.focus1').focus();
 
 // resultsPage is loaded but automatically hidden at page load
 $("#resultsPage").hide();
@@ -21,6 +25,7 @@ $(".searchButton").on("click", function() {
 		dateAdded: firebase.database.ServerValue.TIMESTAMP
 	});*/
 
+	console.log("Search button pushed!");
 
 	// Grab the Search Text-box info
 	var search = $('.searchInput').val().trim();
@@ -28,12 +33,14 @@ $(".searchButton").on("click", function() {
 	// Run the getMusicInfo function
 	getMusicInfo(search);
 
-	console.log("Search button pushed!");
-
 	// Empties the startPage div and shows the resultsPage div
 	// window.location.assign("searchResults.html?"+ search);
 	$("#startPage").empty();
 	$("#resultsPage").show();
+
+	// Clears the navbar searchInput text-box and places the focus there
+	$('.searchInput').val("");
+	$('.focus2').focus();
 
 	// Don't refresh the page!
 	return false;
@@ -95,3 +102,5 @@ dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", functio
 	$("#agedisplay").html(childSnapshot.val().age);
 	$("#commentdisplay").html(childSnapshot.val().comment);
 });*/
+
+});
