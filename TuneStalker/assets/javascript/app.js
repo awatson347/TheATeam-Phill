@@ -41,6 +41,7 @@ $(".searchButton").on("click", function() {
 
 function getMusicInfo(search) {
 	console.log("Searching for: " + search);
+	var search = "Fijiwiji Yours Truly"
 	var settings = {
 		"async": true,
 		"crossDomain": true,
