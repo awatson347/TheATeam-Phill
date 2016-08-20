@@ -28,6 +28,9 @@
     <!-- MusixMatch tracking for API compliance. for additional info: https://developer.musixmatch.com/documentation/api-reference/track-lyrics-get   -->
     <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
 
+    <!-- jQuery Validation Plugin -->
+    <script src="assets/javascript/jquery.validate.js"></script>
+
 </head>
 <body>
 	<div class="container">
@@ -86,12 +89,37 @@
 		      </form>
 
 		      <ul class="nav navbar-nav navbar-right" id="navbarLinks">
-		        <li><a href="#">Login to Spotify</a></li>
+		        <li><button id="loginButton">Login to Spotify</button></li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 
 		  </div><!-- /.container-fluid -->
 		</nav>
+
+		<!-- ************************* -->
+		<!-- Modal -->
+		<!-- ************************* -->
+		<div class="modal" id="loginModal">
+			<div class="modal-content">
+				<span class="close">X</span>
+    			<form class="cmxform" id="loginForm" method="get" action="" autocomplete="off">
+				  <fieldset>
+				    <legend>Please login to your Spotify account</legend>
+				    <p>
+				      <label for="cemail">E-Mail</label>
+				      <input id="cemail"  name="email" type="email" required>
+				    </p>
+				    <p>
+				      <label for="cpassword">Password</label>
+				      <input id="cpassword" name="password" type="password" required></input>
+				    </p>
+				    <p>
+				      <input class="submit" type="submit" value="Log In">
+				    </p>
+				  </fieldset>
+				</form>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
 
 		<!-- ************************* -->
 		<!-- Tune Stalker Core -->
