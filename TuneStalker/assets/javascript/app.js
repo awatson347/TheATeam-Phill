@@ -133,6 +133,60 @@ $("#searchButton").on("click", function() {
 });
 
 
+// Modal
+//-----------------------------------------------------------------------
+
+var modal = $('.modal');
+
+// Capture Button Click to Login to Spotify (via modal)
+$("#loginButton").on("click", function() {
+	modal.show();
+	$("#cemail").focus();
+});
+
+// Capture Button Click on "X" to close modal
+$(".close").on("click", function() {
+	$("#cemail").val("");
+	$("#cpassword").val("");
+	$("#cemail-error").empty();
+	$("#cpassword-error").empty();	
+	modal.hide();
+});
+
+// Capture Button Click anywhere outside of the modal to close it
+$(window).on("click", function(event) {
+	if ( $(event.target).is(modal) ){
+		$(".close").click();
+	}
+});
+
+// User Input Validation for Spotify Login Modal
+//-----------------------------------------------------------------------
+
+$("#loginForm").validate({
+	rules: {
+		email: {
+			required: true,
+			email: true
+		},
+
+		password: {
+			required: true,
+		}
+	},
+	messages: {
+		email: {
+			required: "Please provide an email address"
+		},
+
+		password: {
+			required: "Please provide a password"
+		}
+	}
+});
+
+
+
 // Initialize Firebase
 /*var config = {
 
