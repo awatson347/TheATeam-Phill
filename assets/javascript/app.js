@@ -122,18 +122,6 @@ $("#searchButton").on("click", function() {
 	// Run the getMusicInfo function
 	getMusicInfo(search);
 
-	// Gets Lyrics
-	// getLyrics(search);
-
-	// Empties the startPage div and shows the resultsPage div
-	// window.location.assign("searchResults.html?"+ search);
-/*	$("#startPage").empty();
-	$("#resultsPage").show();
-*/
-	// Clears the navbar searchInput text-box and places the focus in there
-	$("#searchInput").val("")
-		.focus();	
-
 	// Don't refresh the page!
 	return false;
 });
