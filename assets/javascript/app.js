@@ -47,6 +47,9 @@ function getMusicInfo(search) {
 		albumArt = response.message.body.track_list["0"].track.album_coverart_800x800;
 		releaseDate = response.message.body.track_list["0"].track.first_release_date;
 		document.getElementById("player").innerHTML = '<iframe src="https://embed.spotify.com/?uri=spotify:track:' + spotifyTrackId + '" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+		document.getElementById("player header").innerHTML = "Spotify ID: " + spotifyTrackId;
+
+
 		//***Testing/Debugging***
 
 		// console.log(response)
@@ -76,6 +79,7 @@ function getMusicInfo(search) {
 			lyrics = response.message.body.lyrics.lyrics_body;
 			copyright = response.message.body.lyrics.lyrics_copyright;
 			document.getElementById("Lyrics").innerHTML = "<pre>" + lyrics + "</pre><br><br><small>" + copyright + "</small>";
+			document.getElementById("lyrics header").innerHTML = "Lyrics For: " + artist + " - " + song;
 
 
 			//***Testing/Debugging
