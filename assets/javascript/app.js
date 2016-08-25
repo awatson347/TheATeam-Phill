@@ -23,7 +23,7 @@ var releaseDate = "";
 
 // Search MusixMatch for track and return first track ID
 function getMusicInfo(search) {
-	console.log("Searching for: " + search);
+	// console.log("Searching for: " + search);
 	var settings = {
 		"async": true,
 		"crossDomain": true,
@@ -37,26 +37,28 @@ function getMusicInfo(search) {
 	}
 
 	$.ajax(settings).done(function (response) {
-		musixTrackId = response.message.body.track_list["0"].track.track_id,
-		spotifyTrackId = response.message.body.track_list["0"].track.track_spotify_id,
-		musicBrainzId = response.message.body.track_list["0"].track.artist_mbid,
-		artist = response.message.body.track_list["0"].track.artist_name,
-		album = response.message.body.track_list["0"].track.album_name,
-		song = response.message.body.track_list["0"].track.track_name,
-		albumArt = response.message.body.track_list["0"].track.album_coverart_800x800,
-		releaseDate = response.message.body.track_list["0"].track.first_release_date,
-		console.log('spotifyTrackId: ' + spotifyTrackId)
-		console.log('musixTrackId: ' + musixTrackId)
-
+		musixTrackId = response.message.body.track_list["0"].track.track_id;
+		spotifyTrackId = response.message.body.track_list["0"].track.track_spotify_id;
+		musicBrainzId = response.message.body.track_list["0"].track.artist_mbid;
+		artist = response.message.body.track_list["0"].track.artist_name;
+		album = response.message.body.track_list["0"].track.album_name;
+		song = response.message.body.track_list["0"].track.track_name;
+		albumArt = response.message.body.track_list["0"].track.album_coverart_800x800;
+		releaseDate = response.message.body.track_list["0"].track.first_release_date;
+		document.getElementById("player").innerHTML = '<iframe src="https://embed.spotify.com/?uri=spotify:track:' + spotifyTrackId + '" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
 		//***Testing/Debugging***
 
 		// console.log(response)
+		// console.log('spotifyTrackId: ' + spotifyTrackId)
+		// console.log('musixTrackId: ' + musixTrackId)
+		// console.log('artist: '+ artist)
+		// console.log('song: ' + song)
 
 		// $.each(response.message.body.track_list, function(k, value) {
 		// 		console.log('Track ' + k, value);
 		// });
 
-		console.log("Lyrics Get for ID: " + musixTrackId)
+		// console.log("Lyrics Get for ID: " + musixTrackId)
 		var settings = {
 			"async": true,
 			"crossDomain": true,
@@ -70,12 +72,15 @@ function getMusicInfo(search) {
 		}
 
 		$.ajax(settings).done(function (response) {
-			lyrics = response.message.body.lyrics.lyrics_body,
-			copyright = response.message.body.lyrics.lyrics_copyright,
+			lyrics = response.message.body.lyrics.lyrics_body;
+			copyright = response.message.body.lyrics.lyrics_copyright;
+			document.getElementById("Lyrics").innerHTML = "<pre>" + lyrics + "</pre><br><br><small>" + copyright + "</small>";
+
 
 			//***Testing/Debugging
-			console.log('lyrics response: ' + lyrics)
-			console.log('musix Copyright: ' + copyright)
+			// console.log('lyrics response: ' + lyrics)
+			// console.log('musix Copyright: ' + copyright)
+
 		});
 	});
 }
@@ -92,7 +97,7 @@ $("#searchInput").focus();
 // Event Listener for hitting Enter key to initiate searching
 $("#searchInput").keyup(function(event) {
     if ( event.keyCode === 13 ) {
-    	console.log("Enter key pushed!");
+    	// console.log("Enter key pushed!");
     	$("#searchButton").click();
     }
 });
@@ -115,18 +120,6 @@ $("#searchButton").on("click", function() {
 
 	// Run the getMusicInfo function
 	getMusicInfo(search);
-
-	// Gets Lyrics
-	// getLyrics(search);
-
-	// Empties the startPage div and shows the resultsPage div
-	// window.location.assign("searchResults.html?"+ search);
-/*	$("#startPage").empty();
-	$("#resultsPage").show();
-*/
-	// Clears the navbar searchInput text-box and places the focus in there
-	$("#searchInput").val("")
-		.focus();	
 
 	// Don't refresh the page!
 	return false;
