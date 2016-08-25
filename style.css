@@ -1,15 +1,18 @@
 * {
   box-sizing: border-box;
 }
+.col-lg-5 .panel-default>.panel-heading {
 
-body {
- margin: 0;
- background-image: url('../img/city_vector_street_empty_city_street_building-7959.png');
- background-size: 1440px 800px;
- background-repeat:repeat;
- display: compact;
+   background-color: blue;
+   background-image: -webkit-gradient(linear,left top,left bottom,from(blue),to(grey))
 }
 
+
+.col-lg-4 .panel-default>.panel-heading {
+
+   background-color: blue;
+   background-image: -webkit-gradient(linear,left top,left bottom,from(blue),to(grey))
+}
 .container {
 	position: relative;
 }
@@ -79,9 +82,3 @@ label#cemail-error, label#cpassword-error {
 	color: red;
 }
 
-h1 {
-text-align: center;
-color: white;
-text-outline: 20px 20px #ffffff;
-
-}
