@@ -1,0 +1,108 @@
+Phil - Into
+===========
+===========
+
+	-Font End Devs =
+
+		Alex Watson
+		Angela Adams
+
+	-Back End Devs = 
+		Anthany Santiago 
+		Phil Van Schepen
+
+Alex - Front end
+================
+================
+
+	Slide 1: Overview
+	-----------------
+		-Look and Feel
+		-Structure
+		-Usability
+
+	Slide two: Look and Feel
+	------------------------
+		-Color’s
+		-How client interacts with site
+		-Bootstrap vs. Foundation
+
+	Slide three: Structure
+	----------------------
+		-Boxes 
+		-Navigation
+		-Where to place results
+
+	Slide four: Usability
+	---------------------
+		-Site flow  
+		-Load time
+		-Expandability
+
+Angela - Front End
+==================
+==================
+
+	Slide 1: Evolution of our Webpage Design:
+	-----------------------------------------
+
+		-Wireframe – originally splash screen + results screen
+		-Layout – Bootstrap vs Foundation
+		-Nav Bar – Search Bar + Login to Spotify Modal
+
+	Slide 2: Nice-to-Haves (but we ran out of time):
+	------------------------------------------------
+		-Tune Stalker Logo
+		-Unified color scheme
+		-Music Recommendations
+		-Trending
+
+	Slide 3: Image of UI
+	--------------------
+		-Summary
+
+	Slide 4: Image of Code
+	----------------------
+		-Summary
+
+
+Anthany - Back End 
+==================
+==================
+
+	Slide 1: APIs Used
+	------------------
+		-MusixMatch
+		-Spotify
+
+	Slide 2: Extra Functionality
+	----------------------------
+		-Youtube (vevo)
+		-Tumblr
+		-Twitter 
+		-Reddit
+
+Phil - Back End & Closing
+=========================
+=========================
+
+	Slide 1: Ajax & JSON
+	--------------------
+
+	Slide 2: API Integration
+	------------------------
+
+	Slide 3: Front End Code Overview
+	-------------------------------
+
+	Slide 4: Back End code overview
+	------------------------------
+
+	Slide 5: TunaStalker
+	--------------------
+
+	Slide 6: Questions
+	------------------
+
+	Slide 7: Thank You
+	------------------
