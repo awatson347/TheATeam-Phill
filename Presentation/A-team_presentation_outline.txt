@@ -1,0 +1,116 @@
+(1) Phil - Into
+===============
+
+(2)	Personalized Music Hub
+	----------------------
+		-Font End Devs =
+			Alex Watson
+			Angela Adams
+		-Back End Devs = 
+			Anthony Santiago 
+			Phil Van Schepen
+
+(3)	Demo
+	-------
+
+(4) Alex - overview
+====================
+		-Look and Feel
+		-Structure
+		-Usability
+
+(5)	Look and Feel
+	------------------------
+		-Color’s
+		-How client interacts with site
+		-Bootstrap vs. Foundation
+
+(6)	Structure
+	----------------------
+		-Boxes 
+		-Navigation
+		-Where to place results
+
+(7)	Usability
+	---------------------
+		-Site flow  
+		-Load time
+		-Expandability
+
+(8) Angela - overview
+======================
+
+		-Design evolution
+		-Nice to haves
+		-Front End Summary
+
+(9)	Evolution of our Webpage Design:
+	-----------------------------------------
+
+		-Wireframe – originally splash screen + results screen
+		-Layout – Bootstrap vs Foundation
+		-Nav Bar – Search Bar + Login to Spotify Modal
+
+(10)Nice-to-Haves (but we ran out of time):
+	------------------------------------------------
+		-Tune Stalker Logo
+		-Unified color scheme
+		-Music Recommendations
+		-Trending
+
+(11)Image of UI
+	--------------------
+		-Summary
+
+(12)Image of Code
+	----------------------
+		-Summary
+
+
+(13)Anthony - Overview
+======================
+		-APIs Used
+		-Nice to Haves
+
+(14)APIs Used
+	------------------
+		-MusixMatch
+		-Spotify
+
+(15)Nice-to-Haves (but we ran out of time):
+	------------------------------------------------
+		-Youtube (vevo)
+		-Tumblr
+		-Twitter 
+		-Reddit
+
+(16)Phil - Back End & Closing
+=============================
+		-API Integration
+		-API Compliance
+		-Nice to Haves
+
+(17)API Integration
+	---------------
+		-Query MusixMatch
+		-Display Spotify Player
+		-Additional Variables
+
+(18)API Compliance
+	--------------
+		-MusixMatch Requires a tracking script and the display of their (grammatically incorrect) copyright with lyrics.
+
+(19)Nice to Haves
+	-------------
+		-MusixMatch JSON validation
+		-If Vevo/Else Spotify
+		-Extra Varibles
+
+(20)TunaStalker
+	--------------------
+
+(21)Questions
+	------------------
+
+(22)Thank You
+	------------------
