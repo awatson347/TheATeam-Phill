@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tune Stalker! | Your Personalized Music Hub</title>
+
+	<!-- jQuery link -->
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!-- Firebase JavaScript Link -->
+	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+	<!-- Moment.js Link -->
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+	<!-- Custom styles for this project -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- MusixMatch tracking for API compliance. for additional info: https://developer.musixmatch.com/documentation/api-reference/track-lyrics-get   -->
+    <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
+
+    <!-- jQuery Validation Plugin -->
+    <script src="assets/javascript/jquery.validate.js"></script>
+
+</head>
+<body>
+	<div class="container">
+
+	  <div id="startPage">
+		<!-- ************************* -->
+		<!-- Jumbotron -->
+		<!-- ************************* -->
+<!-- 		<div class="jumbotron">
+			<h1 class="text-center">Tune Stalker!</h1>
+			<h3 class="text-center">Your personalized music hub</h3>
+		</div> -->
+
+		<!-- ************************* -->
+		<!-- Search Bar -->
+		<!-- ************************* -->
+		<div class="row"> <!-- Row #1 -->
+		  <div class="col-lg-3">
+		  	<!-- Empty Div to center the Search Bar -->
+		  </div><!-- /.col-lg-3 -->
+
+		  <div class="col-lg-6">
+		    <div class="input-group input-group-lg">
+<!-- 		      <input class="form-control searchInput" id="focus1" type="text" placeholder="Search for Artist, Song, or Album...">
+		      <span class="input-group-btn">
+		        <button class="btn btn-primary searchButton" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+		      </span> -->
+		    </div><!-- /input-group -->
+		  </div><!-- /.col-lg-6 -->
+
+		  <div class="col-lg-3">
+		  	<!-- Empty Div to center the Search Bar -->
+		  </div><!-- /.col-lg-3 -->
+		</div><!-- /.row #1 -->
+	  </div><!-- /#startPage -->
+
+	  <div id="resultsPage" -->
+		<!-- ************************* -->
+		<!-- Navbar -->
+		<!-- ************************* -->
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">Tune Stalker!</a>
+		    </div>
+
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <form class="navbar-form navbar-left" onSubmit="return false;">
+		        <div class="input-group" id="navbarSearch">
+		          <input class="form-control" id="searchInput" type="text" placeholder="Search for Artist, Song, or Album...">
+		          <span class="input-group-btn">
+			        <button class="btn btn-primary" id="searchButton" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+			      </span>
+			    </div><!-- /input-group -->
+		      </form>
+
+		      <ul class="nav navbar-nav navbar-right" id="navbarLinks">
+		        <li><button id="loginButton">Login to Spotify</button></li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+
+		  </div><!-- /.container-fluid -->
+		</nav>
+
+		<!-- ************************* -->
+		<!-- Modal -->
+		<!-- ************************* -->
+		<div class="modal" id="loginModal">
+			<div class="modal-content">
+				<span class="close">X</span>
+    			<form class="cmxform" id="loginForm" method="get" action="" autocomplete="off">
+				  <fieldset>
+				    <legend>Please login to your Spotify account</legend>
+				    <p>
+				      <label for="cemail">E-Mail</label>
+				      <input id="cemail"  name="email" type="email" required>
+				    </p>
+				    <p>
+				      <label for="cpassword">Password</label>
+				      <input id="cpassword" name="password" type="password" required></input>
+				    </p>
+				    <p>
+				      <input class="submit" type="submit" value="Log In">
+				    </p>
+				  </fieldset>
+				</form>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+
+		<!-- ************************* -->
+		<!-- Tune Stalker Core -->
+		<!-- ************************* -->
+		<div class="col-lg-6">
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h3 class="panel-title">Artist</h3>
+		    </div>
+		    <div class="panel-body">
+<!-- 		      <p>Video here</p>
+ -->			
+			  <!-- 4:3 aspect ratio -->
+			  <!-- Responsive Embed Code, needs implementing
+ 			  <div class="embed-responsive embed-responsive-4by3">
+			    <iframe class="embed-responsive-item" src="..."></iframe>
+			  </div> -->
+			  
+			<!-- Spotify Embedded player -->
+<iframe src="https://embed.spotify.com/?uri=spotify:track:0YFX5KgwjMOqvAjaZ2U0r4" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+
+		<!--       <p>Bacon ipsum dolor amet irure consequat dolor dolore exercitation. Jerky chuck corned beef, ribeye eu short ribs biltong leberkas flank. Pancetta ut brisket proident fugiat pastrami prosciutto. Ut in tri-tip, est swine deserunt minim leberkas rump bacon meatball pig short ribs. Eu pork belly magna tongue cillum. Rump cillum short ribs sausage. Bresaola tail ea sausage aliquip in laborum ground round exercitation. Sint shank et ullamco sunt jerky tenderloin excepteur commodo. Bacon leberkas quis biltong porchetta mollit aliquip. Do in eu brisket chuck ut corned beef adipisicing kevin officia irure lorem. Andouille aute turkey dolore nisi est eu. Reprehenderit strip steak id velit. Capicola do non et frankfurter ea kevin, boudin porchetta. Chuck veniam consequat ea, laboris eiusmod deserunt alcatra incididunt in. Velit elit pancetta pastrami et eiusmod rump short ribs minim culpa tenderloin. Ullamco esse labore, jerky reprehenderit ut alcatra ut chuck short loin proident culpa occaecat fugiat. Eu landjaeger eiusmod, tri-tip aute chicken et enim aliquip commodo ex. Eiusmod filet mignon anim venison shank, prosciutto laboris t-bone pig ham.</p> -->
+		    </div>
+		  </div>
+		</div>
+
+		<div class="col-lg-6">
+		  <div class="panel panel-default">
+		    <div class="panel-heading">
+		      <h3 class="panel-title">Song | Album</h3>
+		    </div>
+		    <div class="panel-body">
+		      <h3>Type a song title in the search box above to get lyrics!</h3>
+		      <p>Bacon ipsum dolor amet irure consequat dolor dolore exercitation. Jerky chuck corned beef, ribeye eu short ribs biltong leberkas flank. Pancetta ut brisket proident fugiat pastrami prosciutto. Ut in tri-tip, est swine deserunt minim leberkas rump bacon meatball pig short ribs. Eu pork belly magna tongue cillum. Rump cillum short ribs sausage. Bresaola tail ea sausage aliquip in laborum ground round exercitation. Sint shank et ullamco sunt jerky tenderloin excepteur commodo. Bacon leberkas quis biltong porchetta mollit aliquip. Do in eu brisket chuck ut corned beef adipisicing kevin officia irure lorem. Andouille aute turkey dolore nisi est eu. Reprehenderit strip steak id velit. Capicola do non et frankfurter ea kevin, boudin porchetta. Chuck veniam consequat ea, laboris eiusmod deserunt alcatra incididunt in. Velit elit pancetta pastrami et eiusmod rump short ribs minim culpa tenderloin. Ullamco esse labore, jerky reprehenderit ut alcatra ut chuck short loin proident culpa occaecat fugiat. Eu landjaeger eiusmod, tri-tip aute chicken et enim aliquip commodo ex. Eiusmod filet mignon anim venison shank, prosciutto laboris t-bone pig ham.</p>
+		    </div>
+		  </div>
+		</div>
+
+	<!-- ************************* -->
+		<!-- Nested columns for Nice-to-Haves -->
+		<!-- ************************* -->
+			<!-- ************************* -->
+		<!-- Nested columns for Nice-to-Haves -->
+		<!-- ************************* -->
+`<div class="container">
+		<div class="row">
+			<div class="col-lg-4">
+			  <div class="panel panel-default">
+			    <div class="panel-heading">
+			      <h3 class="panel-title">Other stuff</h3>
+			    </div>
+			    <div class="panel-body">
+			      <p>Tumblr here</p>
+			    </div>
+			  </div>
+			</div>
+			
+			<div class="col-lg-4">
+			  <div class="panel panel-default">
+			    <div class="panel-heading">
+			      <h3 class="panel-title">Other stuff</h3>
+			    </div>
+			    <div class="panel-body">
+			      <p>Tweets here</p>
+			    </div>
+			  </div>
+			</div>
+
+			<div class="col-lg-4">
+			  <div class="panel panel-default">
+			    <div class="panel-heading">
+			      <h3 class="panel-title">Other stuff</h3>
+			    </div>
+			    <div class="panel-body">
+			      <p>Tweets here</p>
+			    </div>
+			  </div>
+			</div>
+
+
+
+
+
+			</div>
+
+
+
+
+
+
+
+			</div>
+
+			
+
+
+
+	</div><!-- /container -->
+
+		
+	<!-- JavaScript file -->
+	<script src="assets/javascript/app.js"></script>
+</body>
+</html>

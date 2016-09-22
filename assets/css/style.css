@@ -2,18 +2,17 @@
   box-sizing: border-box;
 }
 
+body {
+ margin: 0;
+ background-image: url('../img/city_vector_street_empty_city_street_building-7959.png');
+ background-size: 1440px 800px;
+ background-repeat:repeat;
+ display: compact;
+}
+
 .container {
 	position: relative;
 }
-
-/*.jumbotron {
-	background-color: blue;
-	color: #fff;
-}*/
-
-/*#searchInput, #searchButton {
-	margin-bottom: 30px;
-}*/
 
 #navbarSearch {
 	min-width: 500px;
@@ -69,4 +68,9 @@ input#cemail, input#cpassword {
 
 label#cemail-error, label#cpassword-error {
 	color: red;
+}
+
+h2 {
+    text-align: center;
+    color: white;
 }

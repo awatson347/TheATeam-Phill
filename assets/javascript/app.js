@@ -27,11 +27,12 @@ function getMusicInfo(search) {
 	var settings = {
 		"async": true,
 		"crossDomain": true,
-		"url": "http://api.musixmatch.com/ws/1.1/track.search?apikey=2d5aab3db0ef66942e77f09e6372efda&q=" + search,
+		"url": "http://crossorigin.me/http://api.musixmatch.com/ws/1.1/track.search?apikey=2d5aab3db0ef66942e77f09e6372efda&q=" + search,
 		"method": "GET",
 		"dataType": "json",
+
 		"headers": {
-			"cache-control": "no-cache",
+			// "cache-control": "no-cache",
 			"postman-token": "86d37139-361c-0e1f-bc05-0a826abaa0b6",
 		}
 	}
@@ -46,6 +47,9 @@ function getMusicInfo(search) {
 		albumArt = response.message.body.track_list["0"].track.album_coverart_800x800;
 		releaseDate = response.message.body.track_list["0"].track.first_release_date;
 		document.getElementById("player").innerHTML = '<iframe src="https://embed.spotify.com/?uri=spotify:track:' + spotifyTrackId + '" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+		document.getElementById("player header").innerHTML = "Spotify ID: " + spotifyTrackId;
+
+
 		//***Testing/Debugging***
 
 		// console.log(response)
@@ -62,11 +66,11 @@ function getMusicInfo(search) {
 		var settings = {
 			"async": true,
 			"crossDomain": true,
-			"url": "http://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=2d5aab3db0ef66942e77f09e6372efda&track_id=" + musixTrackId,
+			"url": "http://crossorigin.me/http://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=2d5aab3db0ef66942e77f09e6372efda&track_id=" + musixTrackId,
 			"method": "GET",
 			"dataType": "json",
 			"headers": {
-				"cache-control": "no-cache",
+				// "cache-control": "no-cache",
 				"postman-token": "ffd2e704-d442-cb45-5451-3dbcc0be3c89"
 			}
 		}
@@ -75,6 +79,7 @@ function getMusicInfo(search) {
 			lyrics = response.message.body.lyrics.lyrics_body;
 			copyright = response.message.body.lyrics.lyrics_copyright;
 			document.getElementById("Lyrics").innerHTML = "<pre>" + lyrics + "</pre><br><br><small>" + copyright + "</small>";
+			document.getElementById("lyrics header").innerHTML = "Lyrics For: " + artist + " - " + song;
 
 
 			//***Testing/Debugging
