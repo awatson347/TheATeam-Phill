@@ -27,7 +27,7 @@ function getMusicInfo(search) {
 	var settings = {
 		"async": true,
 		"crossDomain": true,
-		"url": "http://crossorigin.me/http://api.musixmatch.com/ws/1.1/track.search?apikey=2d5aab3db0ef66942e77f09e6372efda&q=" + search,
+		"url": "http://api.musixmatch.com/ws/1.1/track.search?apikey=2d5aab3db0ef66942e77f09e6372efda&q=" + search,
 		"method": "GET",
 		"dataType": "json",
 
@@ -66,7 +66,7 @@ function getMusicInfo(search) {
 		var settings = {
 			"async": true,
 			"crossDomain": true,
-			"url": "http://crossorigin.me/http://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=2d5aab3db0ef66942e77f09e6372efda&track_id=" + musixTrackId,
+			"url": "http://api.musixmatch.com/ws/1.1/track.lyrics.get?apikey=2d5aab3db0ef66942e77f09e6372efda&track_id=" + musixTrackId,
 			"method": "GET",
 			"dataType": "json",
 			"headers": {
